@@ -67,7 +67,7 @@ $max_tamano = 100 * 1024 * 1024; // 100MB
 // Crear directorio temporal con permisos seguros
 if (!file_exists($directorio_trabajo)) {
     mkdir($directorio_trabajo, 0755, true);
-}
+}                                        
 
 // Función para limpiar nombres
 function limpiar_nombre($nombre) {
@@ -490,9 +490,9 @@ function procesar_html($contenido, $archivo_actual, $titulo_original, $config) {
     // 1. Eliminar TODOS los enlaces a file:// (cualquier ruta)
     $contenido_body = preg_replace('/href=["\']file:\/\/[^"\']*["\']/', 'href="' . $config['url_indice'] . '"', $contenido_body);
     
-    // 2. Eliminar específicamente el enlace a /home/gato/Descargas/index.html
-    $contenido_body = preg_replace('/href=["\']\/home\/gato\/Descargas\/index\.html["\']/', 'href="' . $config['url_indice'] . '"', $contenido_body);
-    $contenido_body = preg_replace('/href=["\']file:\/\/\/home\/gato\/Descargas\/index\.html["\']/', 'href="' . $config['url_indice'] . '"', $contenido_body);
+    // 2. Eliminar específicamente el enlace a /home/nombre de usuario/Descargas/index.html
+    $contenido_body = preg_replace('/href=["\']\/home\/nombre de usuario\/Descargas\/index\.html["\']/', 'href="' . $config['url_indice'] . '"', $contenido_body);
+    $contenido_body = preg_replace('/href=["\']file:\/\/\/nombre de usuario\/gato\/Descargas\/index\.html["\']/', 'href="' . $config['url_indice'] . '"', $contenido_body);
     
     // 3. Buscar el texto exacto "El cuarto de GatoOscuro" y arreglar su enlace
     $contenido_body = preg_replace(
